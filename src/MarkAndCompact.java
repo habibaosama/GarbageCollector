@@ -43,6 +43,7 @@ public class MarkAndCompact {
              node.setMemory_start(m);
              node.setMemory_end(m+ node.getSpaceOccupied()-1);
              m+=node.getSpaceOccupied();
+             node.setMark(false);
 
          }
          //if it is not marked ,so it is garbage and remove it and go back again
