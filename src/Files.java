@@ -52,5 +52,20 @@ public class Files {
     }
 
     // to link the nodes
-    public void
+    public static void linkNodes(String pointersPath , HashMap<Integer,Node> heapHash){
+        String line;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(pointersPath));
+            while ((line=reader.readLine())!=null){
+                String []info=line.split(",");
+                info[0]=info[0].replaceAll("[^0-9]+","");
+                //get the first node and make it's child the second node
+                  heapHash.get(Integer.parseInt(info[0])).addChild(heapHash.get(Integer.parseInt(info[1])));
+
+
+            }
+        }catch (Exception e){
+            System.out.println("Can't open pointers file");
+        }
+    }
 }
