@@ -49,11 +49,9 @@ public class MarkAndCompact {
          else{
              heap.remove(node);
              i--;
-           }
-        }
-
+         }
+     }
     }
-
 
 
 }

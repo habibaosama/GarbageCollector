@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -67,5 +65,24 @@ public class Files {
         }catch (Exception e){
             System.out.println("Can't open pointers file");
         }
+    }
+    public static void heapOut(ArrayList<Node> heap, String outPath){
+        try(FileWriter write =new FileWriter(new File(outPath)) ){
+            for(Node node :heap){
+                StringBuilder line =new StringBuilder();
+                line.append(String.valueOf(node.getId()));
+                line.append(",");
+                line.append(String.valueOf(node.getMemory_start()));
+                line.append(",");
+                line.append((String.valueOf(node.getMemory_end())));
+                line.append("\n");
+                write.write(line.toString());
+
+
+            }
+        }catch (Exception e){
+            System.out.println("error in creating file");
+        }
+
     }
 }
