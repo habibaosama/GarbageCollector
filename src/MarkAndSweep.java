@@ -5,12 +5,14 @@ public class MarkAndSweep {
     private ArrayList<Integer> roots;
     private  ArrayList<Node> heap;
     private HashMap<Integer,Node> heapHash;
+
     public MarkAndSweep(String heapPath,String rootPath,String pointersPath){
         this.roots=Files.loadRoot(rootPath);
         this.heap=Files.loadHeapArray(heapPath);
         this.heapHash=Files.convertArrayToHashmap(heap);
         Files.linkNodes(pointersPath,heapHash);
     }
+
     public ArrayList<Node> marksweep(){
         mark();
         sweep();

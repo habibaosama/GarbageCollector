@@ -6,6 +6,7 @@ public class Node {
     int memory_start;
     int memory_end;
     boolean mark;
+    int size;
     ArrayList<Node> children=new ArrayList<>();
 
     Node(int id,int start,int end){
@@ -13,6 +14,7 @@ public class Node {
         this.memory_start=start;
         this.memory_end =end;
         this.spaceOccupied=end-start+1;
+        this.size=this.memory_end-this.memory_start;
         mark=false;
     }
 
@@ -50,7 +52,9 @@ public class Node {
     public boolean isMark() {
         return mark;
     }
-
+    public int getSize(){
+        return size;
+    }
     public void setMark(boolean mark) {
         this.mark = mark;
     }
