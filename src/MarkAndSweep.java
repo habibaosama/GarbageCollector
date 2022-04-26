@@ -11,7 +11,7 @@ public class MarkAndSweep {
         this.heapHash=Files.convertArrayToHashmap(heap);
         Files.linkNodes(pointersPath,heapHash);
     }
-    public ArrayList<Node> markCompact(){
+    public ArrayList<Node> marksweep(){
         mark();
         sweep();
         return heap;
@@ -41,6 +41,7 @@ public class MarkAndSweep {
             }else{
                 heap.remove(node);
             }
+            System.out.println(i +" start " +heap.get(i).getMemory_start()+ "end"+heap.get(i).getMemory_end());
         }
     }
     public static void main(String[] args){
@@ -49,8 +50,8 @@ public class MarkAndSweep {
         arg[1] =  System.getProperty("user.dir")+"\\src\\roots.txt";
         arg[2] =System.getProperty("user.dir")+"\\src\\pointers.csv";;
         arg[3] = System.getProperty("user.dir")+"\\src\\new-heap-sweep.csv";
-        MarkAndCompact mark =new MarkAndCompact(arg[0],arg[1],arg[2]);
-        Files.heapOut(mark.markCompact() , arg[3]);
+        MarkAndSweep mark =new MarkAndSweep(arg[0],arg[1],arg[2]);
+        Files.heapOut(mark.marksweep() , arg[3]);
     }
 
 }
