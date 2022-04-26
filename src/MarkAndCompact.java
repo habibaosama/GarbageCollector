@@ -19,14 +19,14 @@ public class MarkAndCompact {
    }
    //method for mark the nodes
    /////////////////////////////////Mark////////////////////////////////////////
-   private void mark(){
+   public void mark(){
        for(int id: roots){
            markNode(heapHash.get(id));
 
        }
 
    }
-   private void markNode(Node node){
+   public void markNode(Node node){
        if(node.isMark())
            return;
        node.setMark(true);
@@ -36,6 +36,24 @@ public class MarkAndCompact {
    }
    ///////////////////////////////////////////////////Compact/////////////////////////////////////
     private void compact(){
+     int m=0;
+     for(int i=0;i<heap.size();i++){
+         Node node =heap.get(i);
+         if(node.isMark()){
+             node.setMemory_start(m);
+             node.setMemory_end(m+ node.getSpaceOccupied()-1);
+             m+=node.getSpaceOccupied();
+
+         }
+         //if it is not marked ,so it is garbage and remove it and go back again
+         else{
+             heap.remove(node);
+             i--;
+           }
+        }
 
     }
+
+
+
 }
