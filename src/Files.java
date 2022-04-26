@@ -1,0 +1,56 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Files {
+
+    public static ArrayList<Integer> loadRoot(String rootPath){
+        ArrayList<Integer> root = new ArrayList<Integer>();
+        String line="";
+        try{
+            BufferedReader reader=new BufferedReader(new FileReader(rootPath));
+            while((line=reader.readLine())!=null)
+                root.add(Integer.parseInt(line));
+            reader.close();
+
+        }catch (Exception e){
+           System.out.println("Can't open root file");
+        }
+       return root;
+    }
+    public static ArrayList<Node> loadHeapArray(String heapPath){
+        ArrayList<Node> heapArray = new ArrayList<Node>();
+        String line;
+        try{
+            BufferedReader reader=new BufferedReader(new FileReader(heapPath));
+            while((line=reader.readLine())!=null){
+                String [] info=line.split(",");
+                //to replace all non digit numbers with space
+                info[0]=info[0].replaceAll("[^0-9]+","");
+                Node node =new Node(Integer.parseInt(info[0]),Integer.parseInt(info[1]),Integer.parseInt(info[2]));
+                heapArray.add(node);
+            }
+
+            reader.close();
+
+        }catch (Exception e){
+            System.out.println("Can't open heap file");
+        }
+        return heapArray;
+    }
+
+    //for the heap file hash map key -> id with information
+    public static HashMap<Integer,Node> convertArrayToHashmap(ArrayList<Node> heapArray){
+        HashMap<Integer,Node> heapHash=new HashMap<Integer,Node>();
+        for(int i=0 ;i<heapArray.size();i++)
+            heapHash.put(heapArray.get(i).getId(),heapArray.get(i));
+
+        return heapHash;
+
+    }
+
+    // to link the nodes
+    public void
+}
