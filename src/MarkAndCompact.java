@@ -21,18 +21,18 @@ public class MarkAndCompact {
    /////////////////////////////////Mark////////////////////////////////////////
    public void mark(){
        for(int id: roots){
-           markNode(heapHash.get(id));
+           mark(heapHash.get(id));
 
        }
 
    }
-   public void markNode(Node node){
+   public void mark(Node node){
        if(node.isMark())
            return;
        node.setMark(true);
        //loop through all the children of node and mark them true as they are used not garbage
        for(Node child :node.getChildren())
-           markNode(child);
+           mark(child);
    }
    ///////////////////////////////////////////////////Compact/////////////////////////////////////
     private void compact(){
@@ -53,5 +53,13 @@ public class MarkAndCompact {
      }
     }
 
-
+    public static void main(String[] args){
+        String[] arg = new String[4];
+        arg[0] = System.getProperty("user.dir")+"\\src\\heap.csv";
+        arg[1] =  System.getProperty("user.dir")+"\\src\\roots.txt";
+        arg[2] =System.getProperty("user.dir")+"\\src\\pointers.csv";;
+        arg[3] = System.getProperty("user.dir")+"\\src\\new-heap.csv";
+        MarkAndCompact mark =new MarkAndCompact(arg[0],arg[1],arg[2]);
+        Files.heapOut(mark.markCompact() , arg[3]);
+    }
 }
