@@ -17,6 +17,7 @@ public class G1 {
         Files.linkNodes(pointersPath,heapHash);
     }
 
+    
     public ArrayList<Node> G1GC(int size){
         heapp();
         mark();
