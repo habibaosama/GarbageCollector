@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class G1 {
-    private   ArrayList<Node> heap;
+    private ArrayList<Node> heap;
     private HashMap<Integer,Integer> heapp= new HashMap<>();
     private HashMap<Integer,Node> heapHash;
     private ArrayList<Integer> roots = new ArrayList<>();
