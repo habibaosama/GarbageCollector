@@ -71,7 +71,7 @@ public class Files {
 
     
     public static void heapOut(ArrayList<Node> heap, String outPath){
-
+             Collections.sort(heap);
         try(FileWriter write =new FileWriter(new File(outPath)) ){
             for(Node node :heap){
                 StringBuilder line =new StringBuilder();
