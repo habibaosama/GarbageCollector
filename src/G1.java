@@ -8,7 +8,7 @@ public class G1 {
     private ArrayList<Integer> roots = new ArrayList<>();
     private ArrayList<Integer> garbage = new ArrayList<>();
     private ArrayList<Integer>[] array = new ArrayList[16];
-    private int[] Sizes= new int[16];
+    private int[] sizes= new int[16];
 
     public G1(String heapPath,String rootPath,String pointersPath){
         this.roots=Files.loadRoot(rootPath);
@@ -65,16 +65,16 @@ public class G1 {
         int eachSize = size /16;
 
         for (int i = 0 ;i < 16;i++){
-            Sizes[i] = eachSize;
+            sizes[i] = eachSize;
             array[i] = new ArrayList<>();
         }
 
 
         for (int i=0;i<heap.size();i++){
                 for (int j=heap.get(i).getMemory_start()/eachSize;j<16;j++){
-                    if (Sizes[j] >= heap.get(i).size){
+                    if (sizes[j] >= heap.get(i).size){
                         array[j].add(heap.get(i).id);
-                        Sizes[j] = Sizes[j]-heap.get(i).size;
+                        sizes[j] = sizes[j]-heap.get(i).size;
                         break;
                     }
                 }
@@ -83,29 +83,29 @@ public class G1 {
 
 
         for (int i = 0; i < 16;i++){
-            if (Sizes[i] != 0 ){
+            if (sizes[i] != 0 ){
                 for (int j = 0; j < array[i].size(); j++){
                     if (!heap.get(heapp.get(array[i].get(j))).isMark()){
-                        Sizes[i]+=heap.get(heapp.get(array[i].get(j))).size;
+                        sizes[i]+=heap.get(heapp.get(array[i].get(j))).size;
                         array[i].remove(j);
                     }
                 }
             }
-            if(Sizes[i]==16){
-                Sizes[i]=-16;
+            if(sizes[i]==16){
+                sizes[i]=-16;
             }
         }
 
         //Defragmentation
         for (int i = 0; i < 16; i++){
-            if (Sizes[i]!=-16){
+            if (sizes[i]!=-16){
                 for (int j = 0 ; j<array[i].size();j++){
                     int s = heap.get(heapp.get(array[i].get(j))).size;
                     for (int k = 0;k<16;k++){
-                        if (Sizes[k]<0 && -1*Sizes[k]>=s){
-                            heap.get(heapp.get(array[i].get(j))).setMemory_start((eachSize+Sizes[k]) + k*eachSize);
-                            heap.get(heapp.get(array[i].get(j))).setMemory_end(((eachSize+Sizes[k]) + k*eachSize) + s);
-                            Sizes[k] =Sizes[k]+s;
+                        if (sizes[k]<0 && -1*sizes[k]>=s){
+                            heap.get(heapp.get(array[i].get(j))).setMemory_start((eachSize+sizes[k]) + k*eachSize);
+                            heap.get(heapp.get(array[i].get(j))).setMemory_end(((eachSize+sizes[k]) + k*eachSize) + s);
+                            sizes[k] =sizes[k]+s;
                             break;
                         }
                     }
