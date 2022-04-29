@@ -51,7 +51,6 @@ public class G1 {
 
     public  void sweep(){
         for(int i=0;i<heap.size();){
-            Node node =heap.get(i);
             if(heap.get(i).isMark()==false){
                 heap.remove(i);
             }else{
@@ -103,12 +102,12 @@ public class G1 {
         for (int i = 0; i < 16; i++){
             if (sizes[i]!=-16){
                 for (int j = 0 ; j<array[i].size();j++){
-                    int s = heap.get(heapp.get(array[i].get(j))).size;
+                    int s = heap.get(heapp.get(array[i].get(j))).spaceOccupied;
                     for (int k = 0;k<16;k++){
-                        if (sizes[k]<0 && -1*sizes[k]>=s){
+                        if (sizes[k]<0 && (-1*sizes[k])>=s){
                             heap.get(heapp.get(array[i].get(j))).setMemory_start((eachSize+sizes[k]) + k*eachSize);
-                            heap.get(heapp.get(array[i].get(j))).setMemory_end(((eachSize+sizes[k]) + k*eachSize) + s);
-                            sizes[k] =sizes[k]+s+1;
+                            heap.get(heapp.get(array[i].get(j))).setMemory_end(((eachSize+sizes[k]) + k*eachSize) + s-1);
+                            sizes[k] =sizes[k]+s;
                             break;
                         }
                     }
