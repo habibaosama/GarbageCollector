@@ -62,6 +62,7 @@ public class G1 {
 
     }
 
+    
     public  void G1andDefragment(int size){
 
         int eachSize = size /16;
