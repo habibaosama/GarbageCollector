@@ -66,7 +66,7 @@ public class Files {
             System.out.println("Can't open pointers file");
         }
     }
-
+    
     public static ArrayList<Node> sort(ArrayList<Node> heap){
         ArrayList<Node> h=new ArrayList<>();
         for (int i=0;i<heap.size();i++){
@@ -83,8 +83,9 @@ public class Files {
 
         return heap;
     }
-
+    
     public static void heapOut(ArrayList<Node> heap, String outPath){
+        
         heap=sort(heap);
         try(FileWriter write =new FileWriter(new File(outPath)) ){
             for(Node node :heap){
