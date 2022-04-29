@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Files {
@@ -67,26 +68,10 @@ public class Files {
         }
     }
     
-    public static ArrayList<Node> sort(ArrayList<Node> heap){
-        ArrayList<Node> h=new ArrayList<>();
-        for (int i=0;i<heap.size();i++){
-            int v=i;
-            for(int j=i+1;j<heap.size()-1;j++){
-                if(heap.get(i).getMemory_start()>heap.get(j).getMemory_start()){
-                    v=j;
-                }
-            }
-            Node temp = heap.get(i);
-            heap.set(i,heap.get(v));
-            heap.set(v,temp);
-        }
 
-        return heap;
-    }
     
     public static void heapOut(ArrayList<Node> heap, String outPath){
-        
-        heap=sort(heap);
+
         try(FileWriter write =new FileWriter(new File(outPath)) ){
             for(Node node :heap){
                 StringBuilder line =new StringBuilder();

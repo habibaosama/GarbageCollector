@@ -23,6 +23,7 @@ public class G1 {
         heapp();
         mark();
         G1andDefragment(size);
+        sweep();
         return heap;
     }
 
@@ -71,7 +72,6 @@ public class G1 {
             array[i] = new ArrayList<>();
         }
 
-
         for (int i=0;i<heap.size();i++){
                 for (int j=heap.get(i).getMemory_start()/eachSize;j<16;j++){
                     if (sizes[j] >= heap.get(i).spaceOccupied){
@@ -81,9 +81,6 @@ public class G1 {
                     }
                 }
         }
-
-
-
         for (int i = 0; i < 16;i++){
             if (sizes[i] != 16){
                 for (int j = 0; j < array[i].size(); j++){
@@ -97,7 +94,6 @@ public class G1 {
                 sizes[i]=-16;
             }
         }
-
         //Defragmentation
         for (int i = 0; i < 16; i++){
             if (sizes[i]!=-16){
@@ -114,20 +110,18 @@ public class G1 {
                 }
             }
         }
-
-        sweep();
     }
 
 
     public static void main(String[] args){
-        String[] arg = new String[5];
+      /*  String[] arg = new String[5];
         arg[0] = System.getProperty("user.dir")+"//src//heap.csv";
         arg[1] =  System.getProperty("user.dir")+"//src//roots.txt";
         arg[2] =System.getProperty("user.dir")+"//src//pointers.csv";;
         arg[3] = System.getProperty("user.dir")+"//src//new-G1.csv";
-        arg[4] = "256";
-        G1 g=new G1(arg[0],arg[1],arg[2]);
-        Files.heapOut(g.G1GC(Integer.parseInt(arg[4])) , arg[3]);
+        arg[4] = "256";*/
+        G1 g=new G1(args[0],args[1],args[2]);
+        Files.heapOut(g.G1GC(Integer.parseInt(args[4])) , args[3]);
     }
 
 }
