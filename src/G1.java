@@ -105,7 +105,7 @@ public class G1 {
                         if (sizes[k]<0 && -1*sizes[k]>=s){
                             heap.get(heapp.get(array[i].get(j))).setMemory_start((eachSize+sizes[k]) + k*eachSize);
                             heap.get(heapp.get(array[i].get(j))).setMemory_end(((eachSize+sizes[k]) + k*eachSize) + s);
-                            sizes[k] =sizes[k]+s;
+                            sizes[k] =sizes[k]+s+1;
                             break;
                         }
                     }
