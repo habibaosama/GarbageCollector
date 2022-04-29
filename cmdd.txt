@@ -1,0 +1,5 @@
+java -jar MarkAndSweep.jar "TestCases\test1\heap.csv" "TestCases\test1\roots.txt" "TestCases\test1\pointers.csv" "TestCases\test1\sweep.csv"
+
+java -jar MarkAndCompact.jar "TestCases\test1\heap.csv" "TestCases\test1\roots.txt" "TestCases\test1\pointers.csv" "TestCases\test1\compact.csv"
+
+java -jar Copy.jar "TestCases\test1\heap.csv" "TestCases\test1\roots.txt" "TestCases\test1\pointers.csv" "TestCases\test1\copy.csv"
