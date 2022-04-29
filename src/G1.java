@@ -18,6 +18,7 @@ public class G1 {
     }
 
     
+    
     public ArrayList<Node> G1GC(int size){
         heapp();
         mark();
