@@ -49,10 +49,10 @@ public class Copy {
 
     public void collect() {
         copied.get(0).setMemory_start(0);
-        copied.get(0).setMemory_end(copied.get(0).getSize());
+        copied.get(0).setMemory_end(copied.get(0).spaceOccupied-1);
         for (int i = 1; i < copied.size(); i++) {
             copied.get(i).setMemory_start(1 + copied.get(i - 1).getMemory_end());
-            copied.get(i).setMemory_end(copied.get(i).getMemory_start() + (copied.get(i).getSize()));
+            copied.get(i).setMemory_end(copied.get(i).getMemory_start() + (copied.get(i).spaceOccupied-1));
         }
     }
 

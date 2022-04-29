@@ -74,9 +74,9 @@ public class G1 {
 
         for (int i=0;i<heap.size();i++){
                 for (int j=heap.get(i).getMemory_start()/eachSize;j<16;j++){
-                    if (sizes[j] >= heap.get(i).size){
+                    if (sizes[j] >= heap.get(i).spaceOccupied){
                         array[j].add(heap.get(i).id);
-                        sizes[j] = sizes[j]-heap.get(i).size;
+                        sizes[j] = sizes[j]-heap.get(i).spaceOccupied;
                         break;
                     }
                 }
@@ -85,10 +85,10 @@ public class G1 {
 
 
         for (int i = 0; i < 16;i++){
-            if (sizes[i] != 0 ){
+            if (sizes[i] != 16){
                 for (int j = 0; j < array[i].size(); j++){
                     if (!heap.get(heapp.get(array[i].get(j))).isMark()){
-                        sizes[i]+=heap.get(heapp.get(array[i].get(j))).size;
+                        sizes[i]+=heap.get(heapp.get(array[i].get(j))).spaceOccupied;
                         array[i].remove(j);
                     }
                 }
