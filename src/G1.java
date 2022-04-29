@@ -82,7 +82,7 @@ public class G1 {
                 }
         }
         for (int i = 0; i < 16;i++){
-            if (sizes[i] != 16){
+            if (sizes[i] != eachSize){
                 for (int j = 0; j < array[i].size(); j++){
                     if (!heap.get(heapp.get(array[i].get(j))).isMark()){
                         sizes[i]+=heap.get(heapp.get(array[i].get(j))).spaceOccupied;
@@ -90,13 +90,13 @@ public class G1 {
                     }
                 }
             }
-            if(sizes[i]==16){
-                sizes[i]=-16;
+            if(sizes[i]==eachSize){
+                sizes[i]=-1* eachSize;
             }
         }
         //Defragmentation
         for (int i = 0; i < 16; i++){
-            if (sizes[i]!=-16){
+            if (sizes[i]!=-1*eachSize){
                 for (int j = 0 ; j<array[i].size();j++){
                     int s = heap.get(heapp.get(array[i].get(j))).spaceOccupied;
                     for (int k = 0;k<16;k++){
