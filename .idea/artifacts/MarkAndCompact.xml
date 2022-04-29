@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MarkAndCompact">
+    <output-path>$PROJECT_DIR$/out/artifacts/MarkAndCompact</output-path>
+    <root id="archive" name="MarkAndCompact.jar">
+      <element id="module-output" name="GarbageCollector" />
+    </root>
+  </artifact>
+</component>

@@ -56,14 +56,14 @@ public class Copy {
         }
     }
 
-    public static void main(String Args[]) throws IOException {
-        String[] arg = new String[4];
+    public static void main(String []args)  {
+        /*String[] arg = new String[4];
         arg[0] = System.getProperty("user.dir")+"//src/heap.csv";
         arg[1] =  System.getProperty("user.dir")+"//src/roots.txt";
         arg[2] =System.getProperty("user.dir")+"//src/pointers.csv";;
         arg[3] = System.getProperty("user.dir")+"/src/new-copy.csv";
-        System.out.println(arg[1]);
-        Copy c =new Copy(arg[0],arg[1],arg[2]);
-        Files.heapOut(c.copyGC(), arg[3]);
+        System.out.println(arg[1]);*/
+        Copy c =new Copy(args[0],args[1],args[2]);
+        Files.heapOut(c.copyGC(), args[3]);
     }
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MarkAndSweep">
+    <output-path>$PROJECT_DIR$/out/artifacts/MarkAndSweep</output-path>
+    <root id="archive" name="MarkAndSweep.jar">
+      <element id="module-output" name="GarbageCollector" />
+    </root>
+  </artifact>
+</component>

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Node {
+public class Node implements Comparable<Node>{
     int  id;
     int spaceOccupied;
     int memory_start;
@@ -23,7 +23,7 @@ public class Node {
     public void setMemory_end(int memory_end) {
         this.memory_end = memory_end;
     }
-    public int getMemory_start() {
+    public Integer getMemory_start() {
         return memory_start;
     }
 
@@ -55,6 +55,10 @@ public class Node {
         this.mark = mark;
     }
 
+    @Override
+    public int compareTo(Node o) {
+        return this.getMemory_start().compareTo(o.getMemory_start());
+    }
 
 
 

@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class MarkAndCompact {
     private ArrayList<Integer> roots;
-    private  ArrayList<Node> heap;
+    private  ArrayList<Node> heap=new ArrayList<>();
     private HashMap<Integer,Node> heapHash;
 
    public MarkAndCompact(String heapPath,String rootPath,String pointersPath){
@@ -37,6 +38,7 @@ public class MarkAndCompact {
    ///////////////////////////////////////////////////Compact/////////////////////////////////////
     private void compact(){
      int m=0;
+        Collections.sort(heap);
      for(int i=0;i<heap.size();i++){
          Node node =heap.get(i);
          if(node.isMark()){
@@ -55,12 +57,13 @@ public class MarkAndCompact {
     }
 
     public static void main(String[] args){
-        String[] arg = new String[4];
-        arg[0] = System.getProperty("user.dir")+"\\src\\heap.csv";
-        arg[1] =  System.getProperty("user.dir")+"\\src\\roots.txt";
-        arg[2] =System.getProperty("user.dir")+"\\src\\pointers.csv";;
-        arg[3] = System.getProperty("user.dir")+"\\src\\new-heap.csv";
-        MarkAndCompact mark =new MarkAndCompact(arg[0],arg[1],arg[2]);
-        Files.heapOut(mark.markCompact() , arg[3]);
+       /*String[] arg = new String[4];
+        arg[0] = System.getProperty("user.dir")+"\\src\\case1\\"+args[0];
+        arg[1] =  System.getProperty("user.dir")+"\\src\\case1\\"+args[1];
+        arg[2] =System.getProperty("user.dir")+"\\src\\case1\\"+args[2];
+        arg[3] = System.getProperty("user.dir")+"\\src\\case1\\"+args[3];;*/
+
+        MarkAndCompact mark =new MarkAndCompact(args[0],args[1],args[2]);
+        Files.heapOut(mark.markCompact() , args[3]);
     }
 }
